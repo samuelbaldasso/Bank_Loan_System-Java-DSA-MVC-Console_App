@@ -60,17 +60,9 @@ public class Emprestimo {
         return calcularTotal() / parcelas;
     }
 
-    public boolean isAprovado(Conta conta) {
-        return verificarIdade() && verificarRenda() && verificarNegativado() && verificarEmprestimos(conta);
-    }
-
     public void solicitar(double valor, Conta conta) throws EmprestimoNaoAtualizadoExcecao, IdadeExcecao, RendaExcecao {
-        if (isAprovado(conta)) {
             System.out.println("Empréstimo aprovado");
             conta.depositar(valor);
-        } else {
-            System.out.println("Empréstimo negado");
-        }
     }
 
     public void pagarParcela(Conta conta) {
@@ -91,22 +83,6 @@ public class Emprestimo {
         } else {
             System.out.println("Saldo insuficiente");
         }
-    }
-
-    public boolean verificarIdade() {
-        return cliente.getIdade() >= 18 && cliente.getIdade() <= 65;
-    }
-
-    public boolean verificarRenda() {
-        return cliente.getRendaMensal() >= 2500;
-    }
-
-    public boolean verificarNegativado() {
-        return !cliente.isNegativado();
-    }
-
-    public boolean verificarEmprestimos(Conta conta) {
-        return conta.getSaldo() >= calcularTotal() * 30 / 100;
     }
 
     public void consultarTudo() {
