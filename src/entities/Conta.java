@@ -49,6 +49,9 @@ public class Conta {
         if (valor <= saldo + limite) {
             saldo -= valor;
         }
+        if (saldo < 0) {
+            System.out.println("Atenção: você entrou no cheque especial!");
+        }
     }
 
     public void depositar(double valor) {
@@ -59,6 +62,9 @@ public class Conta {
         if (valor <= saldo + limite) {
             saldo -= valor;
             destino.depositar(valor);
+        }
+        if (saldo < 0) {
+            System.out.println("Atenção: você entrou no cheque especial!");
         }
     }
 

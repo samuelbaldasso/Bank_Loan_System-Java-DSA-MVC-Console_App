@@ -60,9 +60,9 @@ public class Emprestimo {
         return calcularTotal() / parcelas;
     }
 
-    public void solicitar(double valor, Conta conta) throws EmprestimoNaoAtualizadoExcecao, IdadeExcecao, RendaExcecao {
+    public void solicitar(Conta conta) throws EmprestimoNaoAtualizadoExcecao, IdadeExcecao, RendaExcecao {
             System.out.println("Empréstimo aprovado");
-            conta.depositar(valor);
+            conta.depositar(this.valor);
     }
 
     public void pagarParcela(Conta conta) {
